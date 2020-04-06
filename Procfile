@@ -1,2 +1,3 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* ssb_tcc
+  
+web: java -jar target/selecao-bolsistas-1.0.jar
 
