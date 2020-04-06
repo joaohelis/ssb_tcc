@@ -1,0 +1,172 @@
+<meta charset="utf-8">
+#{extends 'main.html' /}
+#{set title: 'Seleção de bolsistas' /}
+
+<head>
+	<meta charset="UTF-8">
+	
+	<style>
+		.cor-fonte {
+			color: black;
+			
+		}
+		.tamanho-grande{
+			font-size: 18px;
+		}
+		.g{
+			font-size: 20px;
+		}
+		
+		.afastar {
+			padding-left: 40px;
+		}
+		.afastar2 {
+			padding-left: 15px;
+		}
+		
+		.redondo {
+		    border-radius: 50%;
+		    
+		}
+		.afastar-cima {
+			padding-top:100px;
+		}
+	
+	
+	</style>
+</head>
+<body>
+
+
+ #{if flash.success}
+    		<div style="color:green;">
+    			${flash.success}
+    		</div>
+    #{/if}
+
+
+<div class="row">
+
+ <div class="card shadow mb-4 border-left-success border-bottom-success">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-success g">Dados pessoais</h6>
+            </div>
+            
+            <div class="card-body">
+              <div class="table-responsive">
+              <label class="cor-fonte tamanho-grande">Informações gerais</label>
+              
+              <br>
+              <br>
+              <label class="cor-fonte"><b>Nome completo:</b> ${aluno.nome_completo} </label><br>
+              <label class="cor-fonte"><b>Matrícula: </b>${aluno.matricula} </label> <br>
+              <label class="cor-fonte"><b>Curso: </b>${aluno.curso} </label> <br>
+               <label class="cor-fonte"><b>Telefone:</b> ${aluno.telefone} </label><br>
+               <label class="cor-fonte"><b>Endereço:</b> ${aluno.endereco} </label><br>
+                <label class="cor-fonte"><b>Ponto de referência:</b> ${aluno.pont_ref} </label><br>
+              <label class="cor-fonte"><b>Bolsa desejada: </b>${aluno.bolsa.nome} </label> <br>
+             
+              </div>
+              <br>
+               
+             </div>
+
+ 
+
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-success g">Documentos</h6>
+            </div>
+            
+            <div class="card-body ">
+              <div class="table-responsive ">
+              <label class="cor-fonte tamanho-grande">Informações adicionais</label> <BR>
+               <label class="  tamanho-grande" style="color:RED;">*EM MANUTENÇÃO</label>
+              
+              <br>
+              <br>
+              <label class="cor-fonte"><b>RG:</b> <a href="../public/uploads/${aluno.id}/${aluno.nomeRG}">Download</a> </label><br>
+              <label class="cor-fonte"><b>CPF: </b> <a href="../public/uploads/${aluno.id}/${aluno.nomeCPF}">Download</a> </label> <br>
+              <label class="cor-fonte"><b>Comprovante de residência: </b><a href="../public/uploads/${aluno.id}/${aluno.nomeCompResid}">Download</a></label> <br>
+              <label class="cor-fonte"><b>Comprovante de renda: </b> <a href="../public/uploads/${aluno.id}/${aluno.nomeCompRenda}">Download</a></label>
+           
+        <!--   	<label class="cor-fonte"><b>RG:</b> <a href="@{Administradores?.RGAluno(aluno.id)}">Download</a> </label><br>
+          	<label class="cor-fonte"><b>CPF:</b> <a href="@{Administradores?.CPFAluno(aluno.id)}">Download</a> </label><br>
+          	<label class="cor-fonte"><b>Comprovante de residência:</b> <a href="@{Administradores?.CompResidAluno(aluno.id)}">Download</a> </label><br>
+          	<label class="cor-fonte"><b>Comprovante de renda:</b> <a href="@{Administradores?.CompRendaAluno(aluno.id)}">Download</a> </label><br>
+          --> 
+              </div>
+              <br>
+               
+             </div>
+ 
+ 
+ </div>
+ 
+ <div class="row afastar afastar-cima">
+
+  <div class="card shadow mb-5 border-left-success border-bottom-success">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-success g">Resultados: </h6>
+            </div>
+            
+            <div class="card-body">
+              <div class="table-responsive">
+              <label class="cor-fonte tamanho-grande">Identificação (Foto)</label> <br>	
+              	<img class=" img-thumbnail " alt="" src="${aluno.url_foto_150x200}"> <br> <br>
+              	 <label class="cor-fonte"><b>Pontuação final: </b> <a>${aluno.pontuacao}</a> </label><br>
+              	 <label class="cor-fonte"><b>Situação da entrevista do aluno: </b> <a>${aluno.entrevista}</a> </label><br>
+              <br>
+              <br>
+              </div>
+             </div>
+
+
+ <div class="card-header py-4">
+              <h6 class="m-0 font-weight-bold text-success g">Opções:</h6>
+            </div>
+            
+            <div class="card-body ">
+              <div class="table-responsive ">
+
+              <label class="cor-fonte"><a href="@{Administradores.confEntrevista(aluno.id)}"><b>Confirmar entrevista </b></a></label><br>
+              <label class="cor-fonte"><a href="@{Administradores.indefEntrevista(aluno.id)}"><b>Indefererir entrevista </b></a></label><br>
+            
+          
+              </div>
+              <br>
+               
+             </div>
+ 
+
+          
+ </div>
+ </div>
+ 
+ <div class="row justify-content-center afastar2">
+ <div class="card shadow mb-8 border-left-success border-bottom-success">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-success g">Dados socioeconômicos</h6>
+            </div>
+           <div class="card-body">
+              <div class="table-responsive">
+              	  <br>
+              	  <label class="cor-fonte"><b>Aluno dependente:</b> ${aluno.dependencia} </label><br>
+              	   <label class="cor-fonte"><b>Quantidade de matérias da dependência: </b> ${aluno.nDepen} </label><br>
+              	    <label class="cor-fonte"><b>Programas que deseja fazer a inscrição:</b> ${aluno.getProgramasString()} </label><br>
+              	     <label class="cor-fonte"><b>Reside em zona rural, assentamentos, remanescentes de quilombolas ou indígenas:</b> ${aluno.moradia} </label><br>
+              	     <label class="cor-fonte"><b>Renda bruta familiar: </b> ${aluno.renda_bruta} </label><br>
+              	     <label class="cor-fonte"><b>Renda per capita: </b> ${aluno.renda_per} </label><br>
+              	     <label class="cor-fonte"><b>Quantidade de pessoas que residem em sua casa: </b> ${aluno.quant_pessoas} </label><br>
+              	     <label class="cor-fonte"><b>Composição familiar: </b> ${aluno.getComposicaoFamiliarString()} </label><br>
+              	     <label class="cor-fonte"><b>Situação de moradia: </b> ${aluno.sit_moradia} </label><br>
+              	     <label class="cor-fonte"><b>Outras informações: </b> ${aluno.getOutrasInfoString()} </label><br>
+              	    
+              </div>
+              </div>
+ </div>
+
+	</div>
+	</div>
+
+	<!--  <div class="col-xl-3 col-md-6 mb-4">-->
+</body>	

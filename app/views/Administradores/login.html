@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Seleção de bolsistas</title>
+</head>
+<body>
+	<h1>Informe seus dados para login:</h1>
+	<h2>(EM MANUTENÇÃO!!!!)</h2>
+	<form action="@{Administradores.verificarLogin}" method="post">
+		Matrícula: <input type="text" name="adm.matricula"><br>
+		Senha: <input type="password" name="adm.senha"><br>
+		<input type="submit" value="Entrar">
+	
+	</form>
+	
+	<a href="@{Application.inicio}">Página inicial</a>
+</body>
+</html>

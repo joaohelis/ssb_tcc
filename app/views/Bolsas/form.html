@@ -1,0 +1,93 @@
+#{extends 'main.html' /}
+#{set title: 'Seleção de bolsistas' /}
+ <meta charset="UTF-8">
+	
+<!--  	
+	<form action="@{Bolsas.salvar}" method="post">
+	
+		<input type="hidden" name="bolsa.id" value="${bolsa?.id}"><br>
+	
+		Nome:	<input type="text" name="bolsa.nome" value="${bolsa?.nome}"><br>
+		Setor: <input type="text" name="bolsa.setor" value="${bolsa?.setor}"><br>
+		Turno: <input type="text" name="bolsa.turno" value="${bolsa?.turno}"><br>
+		<input type="submit" value="Cadastrar">
+	
+	
+	</form>
+-->
+
+ #{if flash.error}
+                  
+                  <div style="color:red;">
+                  	${flash.error}
+                  </div>
+                  
+                  #{/if}
+
+<div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <div class="col-lg-5 d-none d-lg-block btn-success ">
+          <div class="text-center"> 
+          	
+          	<i class="fas fa-book-reader icone-grande afastar-cima"></i>
+          	
+          	</div>
+          
+          
+          </div>
+          
+        
+          <div class="col-lg-7">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Cadastro de bolsa: </h1>
+              </div>
+              
+              <form class="user" method="post" action="@{Bolsas.salvar}">
+                <div class="form-group row">
+                <input type="hidden" name="bolsa.id" value="${bolsa?.id}"><br>
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Nome" name="bolsa.nome" value="${bolsa?.nome}">
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Setor" name="bolsa.setor" value="${bolsa?.setor}">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Turno" name="bolsa.turno" value="${bolsa?.turno}">
+                  </div>
+            
+                </div>
+                <div class="">
+                  	 <input type="text" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Detalhes da bolsa" name="bolsa.detalhes" value="${bolsa?.detalhes}">
+                  	 
+                  </div>
+                  <br>
+                  <div class="form-group">
+                   <label class="font-text font-color-home">Informe o ano do processo seletivo dessa bolsa:</label>  
+                  <select  class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="bolsa.processo.id">
+                  <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
+                  	<option value="">---</option>
+                  	#{list items:processos, as: 'processo'}
+						<option class="dropdown-item" value="${processo.id}" #{if bolsa?.processo?.id == processo?.id} selected #{/if}>${processo.data} </option>	
+						</div>	
+					#{/list}
+                  	</select>
+                  	</div>
+                  <br>
+                  <br>
+                <input class="btn btn-success btn-user btn-block" type="submit" value="Cadastrar">
+                <hr>
+         
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

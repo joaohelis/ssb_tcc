@@ -1,0 +1,203 @@
+#{extends 'main2.html' /}
+#{set title: 'Seleção de bolsistas' /}
+ <meta charset="UTF-8">
+
+
+<body  class="bg-gradient-primary">
+
+
+
+  <div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <div class="col-lg-0 d-none">
+          	
+          	
+          <div class="text-center">
+          	
+          </div>
+          
+          </div>
+          <div class="col-lg-10">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray mb-4 font-preta">Análise Socioeconômica - Serviço Social</h1>
+                <h2 class="h5 text-gray mb-4 font-preta">Dados pessoais e acadêmicos</h2>
+                <br>
+              </div>
+
+              <form class="user" method="post" action="@{Alunos.salvarAnaliseSessao}" enctype="multipart/form-data">
+              <div class="form-group row">
+               <input type="hidden" name="aluno.id" value="${aluno?.id}"><br>
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                   <label class="font-text font-preta font-tit">Nome: 
+                   </label> <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="${session.get('aluno.nome_completo')}"  value="${aluno?.nome_completo}" readonly>
+                   </div>
+                    <div class="col-sm-6">
+                   <label class="font-text font-preta font-tit">Matrícula: 
+                   </label> <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="${session.get('aluno.matricula')}" name="aluno.matricula" value="${aluno?.matricula}" readonly>
+                  </div>
+                  <div class="col-sm-6">
+                  <br>
+                  	 <label class="font-text font-preta font-tit">Curso:
+                  	  </label> <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="${session.get('aluno.curso')}"  value="${aluno?.curso}" readonly>
+                  </div>
+                   <div class="col-sm-6">
+                  <br>
+                  	 <label class="font-text font-preta font-tit">Situação: 
+                  	 </label> <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="${session.get('aluno.situacao_matricula')}"  value="${aluno?.situacao_matricula}" readonly>
+                  </div>
+                  <div class="col-sm-6">
+                  <br>
+                  	 <label class="font-text font-preta font-tit">Dependência?</label> <br> 
+                  <input type="radio" name="aluno.dependencia" value="Não" checked>	 <label class="font-preta font-peq text-afastar">Não </label>
+                  <input type="radio" name="aluno.dependencia" value="Sim">	 <label class="font-preta font-peq text-afastar">Sim</label> <br>
+                   <span class="error text-valid"> #{error 'aluno.dependencia' /}</span>
+                  	  <label class="font-text font-preta">Caso sim, quantas você paga: </label> <br> 
+                  	  <select name="aluno.nDepen">
+                  	  	<option>0</option>
+                  	  	<option>1</option>
+                  	  	<option>2</option>
+                  	  	<option>3</option>
+                  	  </select>
+                  	   <span class="error text-valid"> #{error 'aluno.nDepen' /}</span>
+                  	  
+                  </div>
+                  <div class="col-sm-6">
+                  <br>
+                  	 <label class="font-text font-preta font-tit">Programas que deseja fazer a inscrição: </label> <br>
+                  	 <input type="checkbox" name="aluno.programas" value="Apoio"> <label class="font-text font-preta">Apoio </label> <br>
+                  	  <input type="checkbox" name="aluno.programas" value="Alimentação"> <label class="font-text font-preta">Alimentação </label><br>
+                  	   <input type="checkbox" name="aluno.programas" value="Transporte"> <label class="font-text font-preta">Transporte </label><br>
+                  	    <input type="checkbox" name="aluno.programas" value="Moradia"> <label class="font-text font-preta">Moradia </label> <br>
+                  	     <span class="error text-valid"> #{error 'aluno.programas' /}</span>
+                  </div>
+                   <div class="col-sm-8">
+                  <br>
+                  	 <label class="font-text font-preta font-tit">Renda per capta: </label> 
+                  	<select class="input-size" name="aluno.renda_per">
+                  		<option>---- Informe ---- </option>
+                  		<option>Renda per capita de até 1/2 salário mínimo</option>
+                  		<option>Renda per capita de até 1 salário mínimo</option>
+                  		<option>Renda per capita de até 1 salário mínimo e meio</option>
+                  		<option>Renda Per capita acima de 1 salário mínimo e meio</option>
+                  	</select>
+                  	 <span class="error text-valid"> #{error 'aluno.renda_per' /}</span>
+                  	 <br>
+                  	  <br>
+                  	  <div class="col-sm-6 mb-3 mb-sm-0">
+                  	  <label class="font-text font-preta font-tit">Renda bruta: 
+                  	 </label> <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Ex: 2000" name="aluno.renda_bruta"  value="${aluno?.renda_bruta}">
+                  	  <span class="error text-valid"> #{error 'aluno.renda_bruta' /}</span>
+                  	 </div> <br>
+                  	<label class="font-text font-preta">Natureza da renda familiar: </label>  <br>
+                  	<select name="aluno.renda_familiar">
+                  		<option>---- Informe ---- </option>
+                  		<option>Formal</option>
+                  		<option>Informal</option>
+                  		<option>Mista</option>
+                  		  	
+                  	</select> 
+                
+                  
+            
+                  <br>	<div class="col-sm-6 mb-3 mb-sm-0"> <br>
+                  	  <label class="font-text font-preta font-tit">Quantidade de pessoas em sua casa: 
+                  	 </label> <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Ex: 3" name="aluno.quant_pessoas"  value="${aluno?.quant_pessoas}">
+                  	  <span class="error text-valid"> #{error 'aluno.quant_pessoas' /}</span>
+                  	 </div> 
+                  </div>
+               
+                  
+                  
+                  <div class="col-sm-6">
+                  <br>
+                  	 <label class="font-text font-preta font-tit">Composição familiar: </label> <br>
+                  	  <input type="checkbox" name="aluno.comp_familiar" value="Membros menores de 18 anos"> <label class="font-text font-preta">Membros menores de 18 anos </label><br>
+                  	  <input type="checkbox" name="aluno.comp_familiar" value="Pessoas do núcleo familiar com 60 anos ou mais"> <label class="font-text font-preta">Pessoas do núcleo familiar com 60 anos ou mais </label><br>
+                  	   <input type="checkbox" name="aluno.comp_familiar" value="Pessoas do núcleo familiar com doenças crônicas"> <label class="font-text font-preta">Pessoas do núcleo familiar com doenças crônicas</label><br>
+                  	    <input type="checkbox" name="aluno.comp_familiar" value="Pessoas do núcleo familiar com deficiência"> <label class="font-text font-preta">Pessoas do núcleo familiar com deficiência</label><br>
+                  	    <input type="checkbox" name="aluno.comp_familiar" value="Família monoparental"> <label class="font-text font-preta">Família monoparental </label> <br>
+                  	     <span class="error text-valid"> #{error 'aluno.comp_familiar' /}</span>
+                  </div>
+                 
+                   <div class="col-sm-6">
+                  <br>
+                  	 <label class="font-text font-preta font-tit">Situação de moradia: </label> <br>
+                  		<select name="aluno.sit_moradia">
+                  		<option>---- Informe ---- </option>
+                  		<option>Próprio</option>
+                  		<option>Alugado</option>
+                  		<option>Cedido</option>
+                  	</select> 
+                  	 <span class="error text-valid"> #{error 'aluno.sit_moradia' /}</span>
+           
+                  	<br>
+                  	<br> <label class="font-text font-preta ">Reside em zona rural, assentamentos, remanescentes de quilombolas ou indígenas? </label> <br>
+                  	  <input type="radio" name="aluno.moradia" value="Não" checked>	 <label class="font-preta font-peq text-afastar">Não </label>
+                      <input type="radio" name="aluno.moradia" value="Sim">	 <label class="font-preta font-peq text-afastar">Sim</label> <br>
+                       <span class="error text-valid"> #{error 'aluno.moradia' /}</span>
+                 
+                  	
+                  </div>
+                  
+                  <div class="col-sm-6">
+                  <br>
+                  	 <label class="font-text font-preta font-tit">Outras informações:</label><br>
+                  	  <input type="checkbox" name="aluno.outras_info" value="Desempregado"> <label class="font-text font-preta">Desempregado</label><br>
+                  	  <input type="checkbox" name="aluno.outras_info" value="Beneficiário de programas sociais"> <label class="font-text font-preta">Beneficiário de programas sociais</label><br>
+                  	   <input type="checkbox" name="aluno.outras_info" value="Possui gastos mensais com medicações"> <label class="font-text font-preta">Possui gastos mensais com medicações</label><br>
+                  	    <input type="checkbox" name="aluno.outras_info" value="Utiliza SUS como serviço de saúde"> <label class="font-text font-preta">Utiliza SUS como serviço de saúde</label><br>
+               			 <span class="error text-valid"> #{error 'aluno.outras_info' /}</span>
+                  </div>
+                  
+                  
+                  
+                 <!-- SEÇÃO DE ANEXAÇÃO DOS DOCUMENTOS -->
+                 
+           <!--        <div class="col-sm-6">
+                  <br>
+                  	 <label class="font-text font-preta font-tit">Anexação de documentos: </label> <br>
+                  	 <label class="font-text font-preta font-tit">*Caso não tenha enviado via SUAP </label> <br>
+                  	 <label class="font-text font-preta"> RG: </label> <br>
+                  	 <input type="file" class="" name="doc_rg"> <br>
+                    	  <span class="error text-valid"> #{error 'aluno.doc_rg' /}</span> <br> 
+                  	 <label class="font-text font-preta"> CPF: </label> <br>
+                  	 <input type="file" class="" name="doc_cpf"> <br>
+                   	  <span class="error text-valid"> #{error 'aluno.doc_cpf' /}</span> <br> 
+                  	 <label class="font-text font-preta"> Comprovante de residência: </label> <br> 
+                  	 <input type="file" class="" name="doc_comp_resid"> <br>
+                   	  <span class="error text-valid"> #{error 'aluno.doc_comp_resid' /}</span> <br> 
+                  	 <label class="font-text font-preta"> Comprovante de renda: </label> <br>
+                  	 <input type="file" class="" name="doc_comp_renda">
+                 	  <span class="error text-valid"> #{error 'aluno.doc_comp_renda' /}</span> <br> 
+                  	
+                  </div> -->  
+              	</div>
+                  <br>
+              			
+                
+                
+                <input class="btn btn-primary btn-user btn-block col-lg-5 " type="submit" value="Enviar">
+                <hr>
+
+           </form>
+         
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+
+
+
+
+
+	
+

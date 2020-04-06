@@ -1,0 +1,63 @@
+
+
+#{extends 'main.html' /}
+#{set title: 'Seleção de bolsistas' /}
+ <meta charset="UTF-8">
+
+
+
+<div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          
+          <div class="col-lg-7">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Abrir processo</h1>
+              </div>
+              
+              <form class="user" method="post" action="@{ProcessosSeletivos.salvar}">
+                <div class="form-group row">
+                <input type="hidden" name="adm.id" value="${administrador?.id}"><br>
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Nome" name="processo.nome" value="${processo?.nome}">
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Ano" name="processo.data" value="${processo?.ano}">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                   <label>Administrador responsável: </label>
+                   <select name="processo.adm.id">
+                   		<option>------------</option>
+                   		#{list items:responsaveis, as:'responsavel'}
+                  			<option value="${responsavel.id}">${responsavel.nome}</option>
+                  	#{/list}
+                   
+                   </select>
+                  </div>
+                </div>
+                <input class="btn btn-success btn-user btn-block" type="submit" value="Cadastrar">
+                <hr>
+         
+            </div>
+          </div>
+          <div class="col-lg-5 d-none d-lg-block btn-success">
+          
+          	<div class="text-center"> 
+          	
+          	<i class="fas fa-cogs icone-grande afastar-cima"></i>
+          	
+          	</div>
+          
+          
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

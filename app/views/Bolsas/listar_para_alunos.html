@@ -1,0 +1,74 @@
+
+#{extends 'main2.html' /}
+#{set title: 'Seleção de bolsistas' /}
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+	<h1 class="h3 text-gray-900 mb-4 font-text">Informe o nome da bolsa que desejas buscar:</h1>
+	<br>
+
+
+ <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="post" action="@{ALunos.buscar_para_alunos}">
+            <div class="input-group">
+            <input type="text" class="form-control bg-light border-0 small border-left-primary border-bottom-primary" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2" name="buscarNome">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+	<br>
+	<br>
+	<hr>
+	<br>
+
+
+	<h1 class="h3 text-gray-900 mb-4 font-text">Lista de bolsas cadastradas no sistema:</h1>
+	
+	
+
+ <div class="card shadow mb-4 border-left-primary border-bottom-primary">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Lista de bolsas</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+              <span class="error text-valid"> *Acesse a aba de detalhamento da bolsa para mais informações!!</span>   
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+            
+                    <tr>
+                      <th>Nome</th>
+                      <th>Setor</th>
+                      <th>Turno</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Nome</th>
+                      <th>Setor</th>
+                      <th>Turno</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                   #{list items:bolsas, as: 'bolsa'}
+                    <tr>
+                      <td> ${bolsa.nome}</td>
+                      <td> ${bolsa.setor}</td>
+                      <td> ${bolsa.turno}</td>
+                	
+					  <td><a href="@{ALunos.detalhar(bolsa.id)}" class="small">Detalhar</a></td>
+                      
+                    </tr>
+                    </tbody>
+                    #{/list}
+              #{else}
+				 <tr>
+                      <td> Nenhuma bolsa cadastrada!</td>
+                 </tr>
+					#{/else}
+	
+			</table>
+	</div>

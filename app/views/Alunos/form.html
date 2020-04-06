@@ -1,0 +1,119 @@
+#{extends 'main2.html' /}
+#{set title: 'Seleção de bolsistas' /}
+ <meta charset="UTF-8">
+
+
+<body  class="bg-gradient-sucess">
+<!--  	<h1>Formulário de cadastro:</h1>
+	
+	<form action="@{Alunos.salvar}" method="post">
+	
+		<input type="hidden" name="aluno.id" value="${aluno?.id}"><br>
+	
+		Nome:	<input type="text" name="aluno.nome" value="${aluno?.nome}"><br>
+		Matrícula: <input type="text" name="aluno.matricula" value="${aluno?.matricula}"><br>
+		Curso: <input type="text" name="aluno.curso" value="${aluno?.curso}"><br>
+		Turma: <input type="text" name="aluno.turma" value="${aluno?.turma}"><br>
+		Senha: <input type="password" name="aluno.senha" value="${aluno?.senha}"><br>
+		<input type="submit" value="Cadastrar">
+	
+	
+	</form>
+	
+	<a href="@{Application.inicio}">Página inicial</a>
+	
+	-->	
+
+<!--  <h1 class="font-text">Informe os dados para o cadastro:</h1>-->
+
+  <div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <div class="col-lg-5 d-none d-lg-block back-color">
+          	<h1 class="text-style text-center text-uppercase"> Cadastre-se no programa de assistência estudantil</h1>
+          	<br>
+          	
+          <div class="text-center">
+          	<i class="fas fa-utensils fa-fw btn-lg afastar-direita aumentar-tamanho"></i>
+          	<i class="fas fa-bus fa-fw btn-lg afastar-esquerda afastar-direita aumentar-tamanho"></i>
+          	<i class="fas fa-suitcase-rolling btn-lg afastar-direita afastar-esquerda aumentar-tamanho"></i>
+          	<i class="fas fa-book btn-lg afastar-pouco  aumentar-tamanho"></i>
+          </div>
+          
+          </div>
+          <div class="col-lg-7">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Cadastro de aluno:</h1>
+              </div>
+              
+              <form class="user" method="post" action="@{Alunos.salvar}">
+                <div class="form-group row">
+                <input type="hidden" name="aluno.id" value="${aluno?.id}"><br>
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Nome" name="aluno.nome" value="${session.get('aluno.nome_completo')}" readonly>
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Matrícula" name="aluno.matricula" value="${aluno?.matricula}">
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  Escolha a bolsa desejada: 
+                  	<select name="aluno.bolsa.id">
+                  	<option>---</option>
+                  	#{list items:bolsas, as: 'bolsa'}
+						<option value="${bolsa.id}" #{if aluno?.bolsa?.id == bolsa?.id} selected #{/if}>${bolsa.nome} ${session.put("aluno.bolsa.id", aluno.bolsa.id)</option>		
+					#{/list}
+                  
+                  	</select>
+                </div>
+                <div class="form-group">
+                 Situação do aluno:
+                  	<select name="aluno.situacaoAluno">
+                  	<option>---</option>
+                  	#{list items:situacaoAluno, as:'situacaoAluno'}
+                  			<option>${situacaoAluno}</option>
+                  	#{/list}
+                  	</select>
+                </div>
+                
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" id="exampleInputPassword" placeholder="Turma" name="aluno.turma" value="${aluno?.turma}">
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Senha" name="aluno.senha" value="${aluno?.senha}">
+                  </div>
+                  
+                </div>
+                
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Curso"  name="aluno.curso" value="${aluno?.curso}">
+                </div>
+                <input class="btn btn-primary btn-user btn-block" type="submit" value="Cadastrar"  data-toggle="modal" data-target="#logoutModal">
+                </div>
+                  <div class="text-center">
+                    <a class="small" href="@{Sistema.form}">Voltar</a>
+                  </div>
+ 
+                
+         
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+  
+
+
+
+
+	
+

@@ -1,0 +1,97 @@
+#{extends 'main.html' /}
+#{set title: 'Seleção de bolsistas' /}
+ <meta charset="UTF-8">
+ 
+
+	<h1 class="h3 text-gray-900 mb-4 font-text">Informe o nome do administrador que desejas buscar:</h1>
+	
+ <!--  
+	<form method="post" action="@{Administradores.buscar}">
+	
+		Nome: <input type="text" name="buscarNome">
+		<input type="submit" value="Buscar">
+	
+	
+	</form>
+	<br>
+	<h2>-----------------------------------------------------------------------------------</h2>
+	<br>
+
+
+-->
+
+ <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="post" action="@{Administradores.buscar}">
+            <div class="input-group">
+            <input type="text" class="form-control bg-light border-0 small border-left-info border-bottom-info" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2" name="buscarNome">
+              <div class="input-group-append">
+                <button class="btn btn-info" type="submit">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+	<br>
+	<br>
+	<hr>
+	<br>
+
+	<h1 class="h3 text-gray-900 mb-4 font-text">Lista de administradores cadastrados no sistema:</h1>
+	
+<!--  	
+	<ul>
+			#{list items:administradores, as: 'administrador'}
+					<li>Nome: ${administrador.nome} | Matrícula:  ${administrador.matricula} 
+					<a href="@{Administradores.excluir(administrador.id)}">Excluir</a>
+					<a href="@{Administradores.editar(administrador.id)}">Editar</a>
+					</li>
+					
+			#{/list}
+			
+			#{else}
+				Nenhum aluno cadastrado.
+			#{/else}
+</ul>
+-->
+
+<div class="card shadow mb-4 border-left-info border-bottom-info">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-info">Lista de administradores</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+            
+                    <tr>
+                      <th>Nome</th>
+                      <th>Matrícula</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Nome</th>
+                      <th>Matrícula</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                   #{list items:administradores, as: 'adm'}
+                    <tr>
+                      <td> ${adm.nome}</td>
+                      <td>${adm.matricula}</td>
+					  <td> <a href="@{Administradores.excluir(administrador.id)}" class="btn btn-danger btn-circle btn-sm">
+                    <i class="fas fa-trash"></i></a> </td>
+					  <td><a href="@{Administradores.editar(administrador.id)}" class="btn btn-info btn-circle btn-sm"><i class="fas fa-edit"></i></a></td>
+                    </tr>
+                    </tbody>
+                    #{/list}
+              #{else}
+				 <tr>
+                      <td> Nenhum administrador cadastrado!</td>
+                 </tr>
+					#{/else}
+	
+			</table>
+	</div>
+	
+	
+

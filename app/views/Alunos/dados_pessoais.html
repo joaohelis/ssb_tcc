@@ -1,0 +1,175 @@
+<meta charset="utf-8">
+#{extends 'main2.html' /}
+#{set title: 'Seleção de bolsistas' /}
+
+<head>
+	<meta charset="UTF-8">
+	
+	<style>
+		.cor-fonte {
+			color: black;
+			
+		}
+		.tamanho-grande{
+			font-size: 18px;
+		}
+		.g{
+			font-size: 20px;
+		}
+		
+		.afastar {
+			padding-left: 40px;
+		}
+		.afastar-cima {
+			padding-top:200px;
+		}
+	
+	</style>
+</head>
+<body>
+
+
+
+
+
+<div class="row">
+
+ <div class="card shadow mb-4 border-left-success border-bottom-success">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-success g">Dados pessoais</h6>
+            </div>
+            
+            <div class="card-body">
+              <div class="table-responsive">
+              <label class="cor-fonte tamanho-grande">Informações gerais</label>
+              
+              <br>
+              <br>
+              <label class="cor-fonte"><b>Nome completo:</b> ${session.get("aluno.nome_completo")} </label><br>
+              <label class="cor-fonte"><b>Matrícula: </b>${session.get("aluno.matricula")} </label> <br>
+              <label class="cor-fonte"><b>Curso: </b>${session.get("aluno.curso")} </label> <br>
+              <label class="cor-fonte"><b>Telefone: </b>${session.get("aluno.telefone")} </label> <br>
+               <label class="cor-fonte"><b>Cidade: </b>${session.get("aluno.cidade")} </label> <br>
+              <label class="cor-fonte"><b>Endereço: </b>${session.get("aluno.endereco")} </label> <br>
+              <label class="cor-fonte"><b>Bolsa desejada: </b>${session.get("aluno.bolsa.nome")} </label> <br>
+              <label class="cor-fonte"><b>Situação na entrevista:</b> ${session.get("aluno.entrevista")}</label>
+              </div>
+              <br>
+               
+             </div>
+ </div>
+ <div class="row afastar afastar-cima">
+  <div class="card shadow mb-4 border-left-success border-bottom-success">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-success g">Geral</h6>
+            </div>
+            
+            <div class="card-body">
+              <div class="table-responsive">
+              <label class="cor-fonte tamanho-grande">Outras informações:</label>
+              
+              <br>
+              <br>
+             
+              <label class="cor-fonte"><b>Bolsa desejada: </b>${session.get("aluno.bolsa.nome")} </label> <br>
+              <label class="cor-fonte"><b>Situação na entrevista:</b> ${session.get("aluno.entrevista")}</label>
+              </div>
+              <br>
+               
+             </div>
+ </div>
+ </div>
+ <!--  
+ <div class="card shadow mb-7 border-left-success border-bottom-success col">
+            <div class="card-header py-4">
+              <h6 class="m-0 font-weight-bold text-success g">Documentos</h6>
+            </div>
+            
+            <div class="card-body ">	 
+              <div class="table-responsive ">
+              <label class="cor-fonte tamanho-grande">Informações adicionais</label>
+              
+              <br>
+              <br>
+              <label class="cor-fonte"><b>RG:</b> </label><br>
+              <label class="cor-fonte"><b>CPF: </b> </label> <br>
+              <label class="cor-fonte"><b>Comprovante de residência: </b></label> <br>
+              <label class="cor-fonte"><b>Comprovante de renda: </b> </label>
+          
+              </div>
+              <br>
+             
+             </div>
+ </div>
+<!--  
+<div class="col-xl-3 col-md-6 mb-4">
+              <div class="card shadow mb-4 border-left-success border-bottom-success">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Nome Completo:</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800 ">${session.get("aluno.nome_completo")}</div>
+                    </div>
+                    <div class="col-auto">
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Matrícula:</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800 ">${session.get("aluno.matricula")}</div>
+                    </div>
+                    <div class="col-auto">
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+              <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Curso:</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800 ">${session.get("aluno.curso")}</div>
+                    </div>
+                    <div class="col-auto">
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+	</div>
+	
+	<div class="row">
+		<div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Bolsa desejada:</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800 ">${session.get("aluno.bolsa.nome")}</div>
+                    </div>
+                    <div class="col-auto">
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+	
+	</div>
+	-->
+	</div>
+</body>	

@@ -1,0 +1,75 @@
+#{extends 'main.html' /}
+#{set title: 'Seleção de bolsistas' /}
+
+ <meta charset="UTF-8">
+
+<body>
+
+	
+	#{if flash.error}
+                  
+                  <div style="color:red;">
+                  	${flash.error}
+                  </div>
+                  
+                  #{/if}
+                  
+   
+	<br>
+	<br>
+	<hr>
+	<br>
+
+
+
+
+	<h1 class="h1 text-gray-900 mb-4 font-text">Lista de processos seletivos:</h1>
+	
+	
+ #{if flash.success}
+    		<div style="color:green;">
+    			${flash.success}
+    		</div>
+    #{/if}
+ <div class="card shadow mb-4 border-left-primary border-bottom-primary">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Lista de processos</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+            
+                    <tr>
+                      <th>Nome</th>
+                      <th>Ano</th>
+                      <th>Responsável</th>
+                      <th>Detalhar</th>
+                     
+                    </tr>
+                  </thead>
+                 
+                  <tbody>
+                   #{list items:processos, as: 'processo'}
+                    <tr>
+                      <td>${processo.nome}</td>
+                      <td>${processo.data}</td>
+                      <td>${processo.adm.nome}</td>
+                      <td><a href="@{ProcessosSeletivos.detalhar(processo.id)}">Detalhar</a></td>
+           
+                     
+					
+                    </tr>
+                    </tbody>
+                    #{/list}
+              #{else}
+				 <tr>
+                      <td> Nenhum processo realizado!</td>
+                 </tr>
+					#{/else}
+	
+			</table>
+	</div>
+
+	
+

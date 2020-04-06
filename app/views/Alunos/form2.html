@@ -1,0 +1,136 @@
+#{extends 'main2.html' /}
+#{set title: 'Seleção de bolsistas' /}
+ <meta charset="UTF-8">
+<head>
+
+<style>
+	.afastar-cima {
+		padding-top: 220px;
+	
+	}
+
+</style>
+
+</head>
+
+<body  class="bg-gradient-primary">
+
+  <div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <div class="col-lg-5 d-none d-lg-block bg-gradient-info text-white">
+          	<h1 class="text-style text-center text-uppercase afastar-cima display-4 font-text"> Inscreva-se no processo seletivo!</h1>
+          	<br>
+          	
+          <div class="text-center">
+          	<i class="fas fa-utensils fa-fw btn-lg afastar-direita aumentar-tamanho"></i>
+          	<i class="fas fa-bus fa-fw btn-lg afastar-esquerda afastar-direita aumentar-tamanho"></i>
+          	<i class="fas fa-suitcase-rolling btn-lg afastar-direita afastar-esquerda aumentar-tamanho"></i>
+          	<i class="fas fa-book btn-lg afastar-pouco  aumentar-tamanho"></i>
+          </div>
+          
+          </div>
+          
+          <div class="col-lg-7">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Cadastro de aluno:</h1>
+              </div>
+              
+           
+              
+              <form class="user" method="post" action="@{Alunos.salvarNaSessao()}">
+                <div class="form-group row">
+                <input type="hidden" name="aluno.id" value="${aluno?.id}"><br>
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="${session.get('aluno.nome_completo')}"  value="${aluno?.nome_completo}" readonly>
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="${session.get('aluno.matricula')}" name="aluno.matricula" value="${aluno?.matricula}" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="${session.get('aluno.curso')}"  name="aluno.curso" value="${aluno?.curso}" readonly>
+                </div>
+                
+         
+                
+      
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" id="exampleInputPassword" placeholder="Turma" name="aluno.turma" value="${aluno?.turma}">
+                     <span class="error text-valid"> #{error 'aluno.turma' /}</span>
+                  </div>
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" id="exampleInputPassword" placeholder="Idade" name="aluno.idade" value="${aluno?.idade}">    
+                    <span class="error text-valid"> #{error 'aluno.idade' /}</span>
+                  </div> 
+                </div>
+               
+                
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" id="exampleInputPassword" placeholder="Telefone" name="aluno.telefone" value="${aluno?.telefone}">    
+                    <span class="error text-valid"> #{error 'aluno.telefone' /}</span>
+                  </div> 
+                   <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" id="exampleInputPassword" placeholder="Cidade" name="aluno.cidade" value="${aluno?.cidade}">    
+                    <span class="error text-valid"> #{error 'aluno.cidade' /}</span>
+                  </div> 
+                </div>
+                
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Endereço"  name="aluno.endereco" value="${aluno?.endereco}">
+                    <span class="error text-valid"> #{error 'aluno.endereco' /}</span>
+                </div>
+                 <div class="form-group row">
+                 <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" id="exampleInputPassword" placeholder="Ponto de referência" name="aluno.pont_ref" value="${aluno?.pont_ref}"> 
+                     <span class="error text-valid"> #{error 'aluno.pont_ref' /}</span>   
+               
+                  </div> 
+                </div>
+                   #{if flash.error}
+                  
+                  <div style="color:red;">
+                  	${flash.error}
+                  </div>
+                  
+                  #{/if}
+                 <div class="form-group">
+                 <span class="error text-valid"> *Se estiver com dúvidas sobre qual bolsa escolher, clique <a href="@{Alunos.listar_para_alunos()}">aqui</a></span>
+                 <label class="font-text font-color-home">Escolha a bolsa desejada:</label>  
+                  	<select  class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="aluno.bolsa.id">
+                  	<div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
+                  	<option value="">---</option>
+                  	#{list items:bolsas, as: 'bolsa'}
+						<option class="dropdown-item" value="${bolsa.id}" #{if aluno?.bolsa?.id == bolsa?.id} selected #{/if}>${bolsa.nome} </option>	
+						</div>	
+					#{/list}
+                  	</select>
+                  	
+                </div>
+                
+                <input class="btn btn-info btn-user btn-block" type="submit" value="Cadastrar">
+                <hr>
+
+           </form>
+         
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+
+
+
+
+
+	
+

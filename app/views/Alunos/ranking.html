@@ -1,0 +1,83 @@
+#{extends 'main.html' /}
+#{set title: 'Seleção de bolsistas' /}
+
+ <meta charset="UTF-8">
+
+<body>
+	
+	
+	
+	#{if flash.error}
+                  
+                  <div style="color:red;">
+                  	${flash.error}
+                  </div>
+                  
+                  #{/if}
+	<br>
+
+	<h1 class="h1 text-gray-900 mb-4 font-text">Ranking da pontuação final:</h1>
+
+
+ #{if flash.success}
+    		<div style="color:green;">
+    			${flash.success}
+    		</div>
+    #{/if}
+ 	<br>	<br>	<br><div class="card shadow mb-4 border-left-info border-bottom-info">
+ 	
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-info">Lista de alunos</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+            
+                    <tr>
+                      <th>Nome</th>
+                      <th>Matrícula</th>
+                      <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Pontuação: activate to sort column descending" style="width:31px;" aria-sort="ascending"> Pontuação</th>
+                      <th>Turma</th>
+          
+                      <th>Situação</th>
+             
+                      <th>Deferir aluno: </th>
+                      <th>Indeferir Aluno: </th>
+                      <th>Mais informações: </th>
+                      <th>Opções:</th>
+                    </tr>
+                  </thead>
+                 
+                  <tbody>
+                   #{list items:alunos, as: 'aluno'}
+                    <tr>
+                      <td>${aluno.nome}</td>
+                      <td>${aluno.matricula}</td>
+                      <td>${aluno.pontuacao}</td>
+                      <td>${aluno.turma}</td>
+	       <!--             <td>#{if aluno.bolsa == null} ALUNO NAO INSCRITO #{/if}#{else}${aluno.bolsa.nome}#{/else}</td> --> 
+	                  <td>${aluno.situacao}</td>
+                     
+					    <td> <a href="@{Administradores.deferir(aluno.id)}">Deferir</a><td>
+					  <a href="@{Administradores.indeferir(aluno.id)}">Indeferir</a>
+					  <td><a href="@{Administradores.dadosAluno(aluno.id)}">Detalhar</a></td>
+					  <td> <a href="@{Administradores.excluirAluno(aluno.id)}" class="btn btn-danger btn-circle btn-sm">
+                    <i class="fas fa-trash"></i></a> 
+					  <a href="@{Administradores.editarAluno(aluno.id)}" class="btn btn-info btn-circle btn-sm"><i class="fas fa-edit"></i></a></td>
+                    </tr>
+                    </tbody>
+                    #{/list}
+              #{else}
+				 <tr>
+                      <td> Nenhum aluno cadastrado!</td>
+                 </tr>
+					#{/else}
+	
+			</table>
+			</div>
+			</div>
+	</div>
+
+	
+

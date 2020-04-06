@@ -1,0 +1,34 @@
+#{extends 'main2.html' /}
+#{set title: 'Seleção de bolsistas' /}
+ <meta charset="UTF-8">
+
+
+
+  <div class="container">
+
+   <div class="card shadow mb-4 border-left-success border-bottom-success">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-success g">Situação do aluno: ${session.get('aluno.nome')}</h6>
+            </div>
+             <div class="card-body">
+              <div class="table-responsive">
+              
+              <br>
+              <br>
+              <label class="cor-fonte"><b>Sua situação: </b> ${session.get('aluno.situacao')}</label><br>
+              <br>
+              <br>
+              <br>
+               <a class="" href="@{Application.inicio_aluno}">Voltar</a>
+             </div>
+ </div>
+
+  </div>
+  
+  
+
+</div>
+
+
+	
+

@@ -1,0 +1,86 @@
+#{extends 'main.html' /}
+#{set title: 'Seleção de bolsistas' /}
+ <meta charset="UTF-8">
+
+	
+
+<body>
+	<h1 class="h3 text-gray-900 mb-4 font-text">Informe o nome da bolsa que desejas buscar:</h1>
+	<br>
+
+ <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="post" action="@{Bolsas.buscar}">
+            <div class="input-group">
+            <input type="text" class="form-control bg-light border-0 small border-left-success border-bottom-success" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2" name="buscarNome">
+              <div class="input-group-append">
+                <button class="btn btn-success" type="submit">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+	<br>
+	<br>
+	<hr>
+	<br>
+
+
+
+
+	<h1 class="h3 text-gray-900 mb-4 font-text">Lista de bolsas cadastradas no sistema:</h1>
+	 
+
+ <div class="card shadow mb-4 border-left-success border-bottom-success">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-success">Lista de bolsas</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+            
+                    <tr>
+                      <th>Nome</th>
+                      <th>Setor</th>
+                      <th>Turno</th>
+                       <th>Opções:</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Nome</th>
+                      <th>Setor</th>
+                      <th>Turno</th>
+                       <th>Opções</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                   #{list items:bolsas, as: 'bolsa'}
+                    <tr>
+                      <td> ${bolsa.nome}</td>
+                      <td> ${bolsa.setor}</td>
+                      <td> ${bolsa.turno}</td>
+                	  <td> <a href="@{Bolsas.excluir(bolsa.id)}" class="btn btn-danger btn-circle btn-sm">
+                    <i class="fas fa-trash"></i></a>
+                     <a href="@{Bolsas.editar(bolsa.id)}" class="btn btn-info btn-circle btn-sm"><i class="fas fa-edit"></i></a>
+                      <a href="@{Bolsas.alunosNaBolsa(bolsa.id)}" class="btn btn-info btn-circle btn-sm"><i class="fas fa-info"></i></a> </td>
+				
+				
+				
+					<!--    <td><a href="@{Bolsas.editar(bolsa.id)}" class="btn btn-info btn-circle btn-sm"><i class="fas fa-edit"></i></a></td>
+                      -->
+                    </tr>
+                    </tbody>
+                    #{/list}
+              #{else}
+				 <tr>
+                      <td> Nenhuma bolsa cadastrada!</td>
+                 </tr>
+					#{/else}
+	
+			</table>
+	</div>
+	
+	
+
+	
+	

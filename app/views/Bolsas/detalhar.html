@@ -1,0 +1,42 @@
+
+#{extends 'main2.html' /}
+#{set title: 'Seleção de bolsistas' /}
+<head>
+	<meta charset="UTF-8">
+	
+	<style>
+		.cor-fonte {
+			color: black;
+			
+		}
+		.tamanho-grande{
+			font-size: 18px;
+		}
+		.g{
+			font-size: 20px;
+		}
+	
+	</style>
+</head>
+
+
+ <div class="card shadow mb-4 border-left-success border-bottom-success">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-success g">${bolsa.nome}</h6>
+            </div>
+             <div class="card-body">
+              <div class="table-responsive">
+              <label class="cor-fonte tamanho-grande">Descrição da bolsa:</label>
+              
+              <br>
+              <br>
+              <label class="cor-fonte"><b>Turno:</b> ${bolsa.turno}</label><br>
+              <label class="cor-fonte"><b>Setor:</b> ${bolsa.setor}</label>
+              <br>
+              <br>
+              <label class="cor-fonte">${bolsa.detalhes}</label>
+              </div>
+              <br>
+               <a class="" href="@{Alunos.listar_para_alunos}">Voltar</a>
+             </div>
+ </div>
