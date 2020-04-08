@@ -66,8 +66,9 @@
                   	<select name="aluno.bolsa.id">
                   	<option>---</option>
                   	#{list items:bolsas, as: 'bolsa'}
-						<option value="${bolsa.id}" >${bolsa.nome} ${session.put("aluno.bolsa.id", aluno.bolsa.id)</option>		
+						<option value="${bolsa.id}"  #{if aluno?.bolsa?.id == bolsa?.id} selected #{/if} >${bolsa.nome} ${session.put("aluno.bolsa.id", aluno.bolsa.id)</option>		
 					#{/list}
+				#{/list}
                   
                   	</select>
                 </div>
